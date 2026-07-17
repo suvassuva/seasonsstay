@@ -122,7 +122,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-5 pt-5 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-3 text-[9px] text-foreground/40">
-        <p>© {new Date().getFullYear()} 4 Seasons Stay. All Rights Reserved.</p>
+        <p suppressHydrationWarning>© {new Date().getFullYear()} 4 Seasons Stay. All Rights Reserved.</p>
         <div className="flex gap-4">
           <a href="#" className="hover:text-primary">Privacy Policy</a>
           <a href="#" className="hover:text-primary">Terms of Service</a>

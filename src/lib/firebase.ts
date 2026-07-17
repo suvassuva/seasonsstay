@@ -56,6 +56,7 @@ export const firebaseAuth = {
   // Login with Email
   signInWithEmail: async (email: string, _password: string): Promise<UserProfile> => {
     await delay(800);
+    void _password;
     const users = getStoredUsers();
     const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
     
@@ -115,6 +116,7 @@ export const firebaseAuth = {
   // Send OTP
   sendOTP: async (_phone: string): Promise<string> => {
     await delay(1000);
+    void _phone;
     // Simulate verification ID
     return `verification-id-${Math.random().toString(36).substr(2, 5)}`;
   },

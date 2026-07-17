@@ -17,6 +17,75 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+const allAmenities = [
+  {
+    icon: <Wifi size={24} />,
+    title: "Gigabit Free WiFi",
+    desc: "Stay connected seamlessly. High-speed gigabit fiber internet is available across the entire property, beach lounge, and pool decks.",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <Snowflake size={24} />,
+    title: "Climatized Air Conditioning",
+    desc: "Individually controlled triple-filter climate units in every room maintain perfect temperatures while filtering allergens.",
+    image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <UtensilsCrossed size={24} />,
+    title: "L'Aura Michelin Bistro",
+    desc: "Savor gourmet fine-dining menus curated by Michelin-starred culinary chefs, open for breakfast, tea, and formal dinner.",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <Car size={24} />,
+    title: "Secure Valet Parking",
+    desc: "Complimentary, round-the-clock secure vehicle parking featuring electric car charging ports and personal driver assistance.",
+    image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <ConciergeBell size={24} />,
+    title: "24/7 Concierge Reception",
+    desc: "Our desk is staffed 24 hours a day to handle itinerary reservations, local tour guides, taxi hire, and in-room needs.",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <Sparkles size={24} />,
+    title: "Twice-Daily Housekeeping",
+    desc: "Meticulous room cleaning, evening turndown service, linen rotation, and organic essential oil atomizers.",
+    image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <Shirt size={24} />,
+    title: "Valet Laundry & Pressing",
+    desc: "Same-day express dry cleaning, laundry washing, and steam ironing handled directly by our housekeeping valets.",
+    image: "https://images.unsplash.com/photo-1545127398-14699f92334b?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <Coffee size={24} />,
+    title: "Complimentary Fine Breakfast",
+    desc: "Start your morning with a freshly baked continental breakfast, organic fruits, custom egg orders, and gourmet coffees.",
+    image: "https://images.unsplash.com/photo-1495214783159-3503fd1b572d?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <Tv size={24} />,
+    title: "Smart Apple TV setup",
+    desc: "Enjoy ultra-high-definition 4K screens pre-configured with Netflix, Prime Video, and Apple AirPlay integration.",
+    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <Zap size={24} />,
+    title: "Silent Power Backup",
+    desc: "Instantaneous, double-redundant solar and generator backup systems guarantee zero interruptions to your power.",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    icon: <ShieldCheck size={24} />,
+    title: "Double-Layer Guard Security",
+    desc: "Continuous property patrol, card-entry security gates, and in-room electronic safes ensure absolute peace of mind.",
+    image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
 export default function AmenitiesPage() {
   const [isMobile, setIsMobile] = React.useState(false);
   const [activeIdx, setActiveIdx] = React.useState(0);
@@ -35,75 +104,6 @@ export default function AmenitiesPage() {
     }, 4000);
     return () => clearInterval(timer);
   }, [isMobile]);
-
-  const allAmenities = [
-    {
-      icon: <Wifi size={24} />,
-      title: "Gigabit Free WiFi",
-      desc: "Stay connected seamlessly. High-speed gigabit fiber internet is available across the entire property, beach lounge, and pool decks.",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <Snowflake size={24} />,
-      title: "Climatized Air Conditioning",
-      desc: "Individually controlled triple-filter climate units in every room maintain perfect temperatures while filtering allergens.",
-      image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <UtensilsCrossed size={24} />,
-      title: "L'Aura Michelin Bistro",
-      desc: "Savor gourmet fine-dining menus curated by Michelin-starred culinary chefs, open for breakfast, tea, and formal dinner.",
-      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <Car size={24} />,
-      title: "Secure Valet Parking",
-      desc: "Complimentary, round-the-clock secure vehicle parking featuring electric car charging ports and personal driver assistance.",
-      image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <ConciergeBell size={24} />,
-      title: "24/7 Concierge Reception",
-      desc: "Our desk is staffed 24 hours a day to handle itinerary reservations, local tour guides, taxi hire, and in-room needs.",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <Sparkles size={24} />,
-      title: "Twice-Daily Housekeeping",
-      desc: "Meticulous room cleaning, evening turndown service, linen rotation, and organic essential oil atomizers.",
-      image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <Shirt size={24} />,
-      title: "Valet Laundry & Pressing",
-      desc: "Same-day express dry cleaning, laundry washing, and steam ironing handled directly by our housekeeping valets.",
-      image: "https://images.unsplash.com/photo-1545127398-14699f92334b?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <Coffee size={24} />,
-      title: "Complimentary Fine Breakfast",
-      desc: "Start your morning with a freshly baked continental breakfast, organic fruits, custom egg orders, and gourmet coffees.",
-      image: "https://images.unsplash.com/photo-1495214783159-3503fd1b572d?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <Tv size={24} />,
-      title: "Smart Apple TV setup",
-      desc: "Enjoy ultra-high-definition 4K screens pre-configured with Netflix, Prime Video, and Apple AirPlay integration.",
-      image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <Zap size={24} />,
-      title: "Silent Power Backup",
-      desc: "Instantaneous, double-redundant solar and generator backup systems guarantee zero interruptions to your power.",
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      icon: <ShieldCheck size={24} />,
-      title: "Double-Layer Guard Security",
-      desc: "Continuous property patrol, card-entry security gates, and in-room electronic safes ensure absolute peace of mind.",
-      image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80"
-    }
-  ];
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col gap-16 min-h-[85vh]">

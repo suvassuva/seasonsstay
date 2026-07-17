@@ -1,16 +1,15 @@
 "use client";
 
 import React, { useEffect, useState, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { getStoredBookings } from "@/lib/firebase";
 import { Booking } from "@/types";
 import { formatPrice, formatDate, calculateNights } from "@/lib/utils";
-import { CheckCircle2, Download, Home, LayoutDashboard, Printer, Calendar, Users, FileText, ArrowRight } from "lucide-react";
+import { CheckCircle2, Download, Home, Printer, Calendar, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 function ConfirmationContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const bookingId = searchParams.get("id");
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);

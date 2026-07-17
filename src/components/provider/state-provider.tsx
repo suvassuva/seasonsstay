@@ -40,7 +40,16 @@ export function StateProvider({ children }: { children: React.ReactNode }) {
   const [bookings, setBookings] = useState<Booking[]>([]);
 
   // Booking state
-  const [searchParams, setSearchParamsState] = useState<SearchParams>(() => {
+  const [searchParams, setSearchParamsState] = useState<SearchParams>({
+    checkIn: "",
+    checkOut: "",
+    guests: 2
+  });
+  
+  const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
+
+  // Initialize search parameters on client mount to avoid SSR hydration mismatch
+  useEffect(() => {
     const today = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
@@ -49,14 +58,12 @@ export function StateProvider({ children }: { children: React.ReactNode }) {
     const formatDateStr = (d: Date) => 
       `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
-    return {
+    setSearchParamsState({
       checkIn: formatDateStr(today),
       checkOut: formatDateStr(tomorrow),
       guests: 2
-    };
-  });
-  
-  const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
+    });
+  }, []);
 
   // Sync auth on mount
   useEffect(() => {

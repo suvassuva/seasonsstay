@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { Award, ShieldAlert, Heart, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { Award, Heart, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function AboutPage() {

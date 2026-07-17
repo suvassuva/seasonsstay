@@ -10,10 +10,12 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { user } = useAuth();
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -87,7 +89,7 @@ export default function Navbar() {
 
         {/* Right Side: Customer Stays / Wishlist Link + Popover */}
         <div className="flex items-center gap-3 relative nav-popover-container">
-          {user && (
+          {mounted && user && (
             <>
               <button
                 onClick={() => setPopoverOpen(!popoverOpen)}

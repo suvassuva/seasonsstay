@@ -7,7 +7,6 @@ import { LUXURY_ROOMS } from "@/lib/mock-data";
 import { formatPrice, formatDate } from "@/lib/utils";
 import {
   Calendar,
-  Users,
   Heart,
   User,
   Ticket,
@@ -20,7 +19,6 @@ import {
   Bell,
   Trash2
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 export default function CustomerDashboard() {
@@ -66,7 +64,7 @@ export default function CustomerDashboard() {
       });
       setProfileSuccess(true);
       setTimeout(() => setProfileSuccess(false), 3000);
-    } catch (err) {
+    } catch {
       alert("Failed to update profile details.");
     }
   };
@@ -156,7 +154,7 @@ export default function CustomerDashboard() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as typeof activeTab)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider text-left transition-all shrink-0 cursor-pointer w-full ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider text-left transition-all shrink-0 cursor-pointer w-auto lg:w-full ${
                 activeTab === tab.id
                   ? "bg-primary text-background font-bold shadow-md shadow-primary/10"
                   : "text-foreground/75 hover:bg-primary/5 hover:text-primary"

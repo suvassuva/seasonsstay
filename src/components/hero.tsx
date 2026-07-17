@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useBooking } from "@/components/provider/state-provider";
 import { Calendar, Users, ArrowRight } from "lucide-react";
@@ -10,6 +10,18 @@ export default function Hero() {
   const router = useRouter();
   const { searchParams, setSearchParams } = useBooking();
   const [localParams, setLocalParams] = useState(searchParams);
+  const [minDate, setMinDate] = useState("");
+
+  // Initialize minimum selection date on client mount
+  useEffect(() => {
+    setMinDate(new Date().toISOString().split("T")[0]);
+  }, []);
+
+  // Sync local input fields when context search parameters update (e.g. after mount or redirect)
+  useEffect(() => {
+    setLocalParams(searchParams);
+  }, [searchParams]);
+
   const handleInputChange = (field: keyof typeof localParams, value: string | number) => {
     setLocalParams((prev) => ({
       ...prev,
@@ -109,7 +121,7 @@ export default function Hero() {
                   type="date"
                   value={localParams.checkIn}
                   onChange={(e) => handleInputChange("checkIn", e.target.value)}
-                  min={new Date().toISOString().split("T")[0]}
+                  min={minDate}
                   required
                   className="bg-transparent text-[11px] text-foreground md:text-white font-medium focus:outline-none w-full min-w-0"
                 />
@@ -127,7 +139,7 @@ export default function Hero() {
                   type="date"
                   value={localParams.checkOut}
                   onChange={(e) => handleInputChange("checkOut", e.target.value)}
-                  min={localParams.checkIn || new Date().toISOString().split("T")[0]}
+                  min={localParams.checkIn || minDate}
                   required
                   className="bg-transparent text-[11px] text-foreground md:text-white font-medium focus:outline-none w-full min-w-0"
                 />

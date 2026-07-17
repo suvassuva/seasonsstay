@@ -7,8 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { cn } from "@/lib/utils";
-import { Mail, Phone, Lock, ChevronRight, KeyRound, CheckCircle2, ShieldAlert } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, KeyRound, CheckCircle2, ShieldAlert } from "lucide-react";
 
 // Schema validations
 const emailAuthSchema = z.object({
@@ -41,9 +40,9 @@ export default function LoginPage() {
   const [formSuccess, setFormSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Re-route if already logged in
+  // Re-route if already logged in (ignore default auto-authenticated guest session)
   useEffect(() => {
-    if (user) {
+    if (user && user.email !== "guest@4seasonsstay.com") {
       router.push("/dashboard");
     }
   }, [user, router]);
@@ -52,8 +51,7 @@ export default function LoginPage() {
   const {
     register: regEmail,
     handleSubmit: handleEmailSubmit,
-    formState: { errors: errorsEmail },
-    reset: resetEmail
+    formState: { errors: errorsEmail }
   } = useForm<EmailAuthData>({
     resolver: zodResolver(emailAuthSchema),
     defaultValues: { email: "", password: "", name: "" }
@@ -63,8 +61,7 @@ export default function LoginPage() {
   const {
     register: regPhone,
     handleSubmit: handlePhoneSubmit,
-    formState: { errors: errorsPhone },
-    reset: resetPhone
+    formState: { errors: errorsPhone }
   } = useForm<PhoneAuthData>({
     resolver: zodResolver(phoneAuthSchema),
     defaultValues: { phone: "", code: "" }
@@ -136,7 +133,7 @@ export default function LoginPage() {
       await signInGoogle();
       setFormSuccess("Google sign-in successful!");
       router.push("/dashboard");
-    } catch (err) {
+    } catch {
       setFormError("Google authentication cancelled or failed.");
     } finally {
       setLoading(false);

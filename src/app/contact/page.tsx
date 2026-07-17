@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Mail, Phone, MessageSquare, MapPin, Send, HelpCircle, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MessageSquare, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -34,6 +34,7 @@ export default function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     setLoading(true);
+    void data;
     // Simulate submission delay
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setLoading(false);

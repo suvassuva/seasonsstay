@@ -6,7 +6,6 @@ import { LUXURY_ROOMS } from "@/lib/mock-data";
 import { useBooking } from "@/components/provider/state-provider";
 import { formatDate } from "@/lib/utils";
 import { SlidersHorizontal, CalendarDays, RefreshCw } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function RoomsPage() {
   const { searchParams } = useBooking();

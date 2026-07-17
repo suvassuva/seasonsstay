@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { LUXURY_ROOMS, COUPONS } from "@/lib/mock-data";
 import { useBooking } from "@/components/provider/state-provider";
-import { cn, formatPrice, calculateNights, formatDate } from "@/lib/utils";
-import { Check, Calendar, Users, ShieldAlert, Award, ArrowLeft, Heart } from "lucide-react";
+import { cn, formatPrice, calculateNights } from "@/lib/utils";
+import { Check, ShieldAlert, ArrowLeft, Heart } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@/components/provider/state-provider";
 
@@ -25,10 +25,23 @@ export default function RoomDetailsPage() {
   const [checkIn, setCheckIn] = useState(searchParams.checkIn);
   const [checkOut, setCheckOut] = useState(searchParams.checkOut);
   const [guests, setGuests] = useState(searchParams.guests);
+  const [minDate, setMinDate] = useState("");
   const [couponCode, setCouponCode] = useState("");
   const [discountPct, setDiscountPct] = useState(0);
   const [couponError, setCouponError] = useState("");
   const [couponSuccess, setCouponSuccess] = useState("");
+
+  // Initialize minimum selection date on client mount
+  useEffect(() => {
+    setMinDate(new Date().toISOString().split("T")[0]);
+  }, []);
+
+  // Sync inputs with booking context when they change
+  useEffect(() => {
+    setCheckIn(searchParams.checkIn);
+    setCheckOut(searchParams.checkOut);
+    setGuests(searchParams.guests);
+  }, [searchParams]);
 
   useEffect(() => {
     if (room && room.images.length > 0) {
@@ -315,7 +328,7 @@ export default function RoomDetailsPage() {
                     type="date"
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
-                    min={new Date().toISOString().split("T")[0]}
+                    min={minDate}
                     className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:border-primary text-sm text-foreground"
                   />
                 </div>
@@ -331,7 +344,7 @@ export default function RoomDetailsPage() {
                     type="date"
                     value={checkOut}
                     onChange={(e) => setCheckOut(e.target.value)}
-                    min={checkIn || new Date().toISOString().split("T")[0]}
+                    min={checkIn || minDate}
                     className="w-full px-4 py-3 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:border-primary text-sm text-foreground"
                   />
                 </div>
