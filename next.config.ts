@@ -14,12 +14,12 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Standard robust wildcard caching for static assets under /images
-        source: "/images/:path*",
+        // Standard robust caching for static image assets under /images (excludes mp4 to allow edge range requests)
+        source: "/images/:path*\\.(jpg|jpeg|png|webp|avif|gif|svg|ico)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
