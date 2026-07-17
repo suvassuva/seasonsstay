@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,7 +18,6 @@ export default function VideoSlider({ videos, interval = 6000 }: VideoSliderProp
   const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState(1);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const goNext = useCallback(() => {
     setDirection(1);
@@ -92,14 +91,15 @@ export default function VideoSlider({ videos, interval = 6000 }: VideoSliderProp
             className="absolute inset-0"
           >
             <video
-              ref={videoRef}
-              src={videos[activeIdx].src}
+              key={`video-${activeIdx}`}
               autoPlay
               loop
               muted
               playsInline
               className="w-full h-full object-cover"
-            />
+            >
+              <source src={videos[activeIdx].src} type="video/mp4" />
+            </video>
           </motion.div>
         </AnimatePresence>
 
