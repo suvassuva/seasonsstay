@@ -156,9 +156,7 @@ export default function LoginPage() {
     <div className="max-w-md mx-auto px-6 py-16 flex flex-col gap-8 min-h-[75vh] justify-center">
       {/* Brand Header */}
       <div className="flex flex-col items-center text-center gap-2">
-        <span className="w-10 h-10 rounded-full gold-gradient text-background flex items-center justify-center font-serif font-bold text-lg">
-          4S
-        </span>
+        <img src="/images/logo.jpeg" alt="4 Seasons Stay Logo" className="w-10 h-10 rounded-full object-cover shadow-md" />
         <h2 className="text-2xl font-serif font-bold tracking-wide mt-1">4 Seasons Stay</h2>
         <span className="text-[10px] uppercase tracking-widest text-primary font-semibold">
           Luxury Guest Portal

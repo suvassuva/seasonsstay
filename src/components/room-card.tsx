@@ -81,26 +81,26 @@ export default function RoomCard({ room }: RoomCardProps) {
       </div>
 
       {/* Card Details */}
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-3.5 flex flex-col flex-grow">
         {/* Tagline & Name */}
-        <span className="text-[9px] uppercase tracking-widest text-primary font-semibold mb-1">
+        <span className="text-[8px] uppercase tracking-widest text-primary font-semibold mb-0.5">
           {room.view}
         </span>
-        <h3 className="text-base md:text-lg font-serif font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-sm font-serif font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-300">
           {room.name}
         </h3>
-        <p className="text-xs text-foreground/60 leading-relaxed mb-3 flex-grow line-clamp-2">
+        <p className="text-[11px] text-foreground/60 leading-relaxed mb-2.5 flex-grow line-clamp-2">
           {room.description}
         </p>
 
         {/* Dynamic Badges */}
-        <div className="grid grid-cols-3 gap-2 py-2.5 border-y border-primary/10 mb-3 text-[10px] text-foreground/70">
+        <div className="grid grid-cols-3 gap-1.5 py-2 border-y border-primary/10 mb-2.5 text-[9px] text-foreground/70">
           <div className="flex flex-col gap-1 items-center text-center">
-            <Users size={14} className="text-primary" />
+            <Users size={12} className="text-primary" />
             <span>Max {room.maxGuests} Guests</span>
           </div>
           <div className="flex flex-col gap-1 items-center text-center border-x border-primary/10">
-            <Coffee size={14} className="text-primary" />
+            <Coffee size={12} className="text-primary" />
             <span>{room.bedType.split(" ")[0]} Bed</span>
           </div>
           <div className="flex flex-col gap-1 items-center text-center">
@@ -112,16 +112,16 @@ export default function RoomCard({ room }: RoomCardProps) {
         {/* Price & CTA */}
         <div className="flex items-center justify-between mt-auto">
           <div className="flex flex-col">
-            <span className="text-[10px] uppercase tracking-widest text-foreground/40 font-medium">From</span>
-            <span className="text-base font-bold font-sans text-primary">
+            <span className="text-[9px] uppercase tracking-widest text-foreground/40 font-medium">From</span>
+            <span className="text-sm font-bold font-sans text-primary">
               {formatPrice(room.pricePerNight)}
-              <span className="text-[10px] font-normal text-foreground/60"> / Night</span>
+              <span className="text-[9px] font-normal text-foreground/60"> / Night</span>
             </span>
           </div>
           
           <Link
             href={`/rooms/${room.id}`}
-            className="px-4 py-2 rounded-full border border-primary/20 hover:border-primary text-[10px] font-semibold uppercase tracking-wider text-foreground hover:bg-primary/5 transition-all duration-300 cursor-pointer"
+            className="px-3.5 py-1.5 rounded-full border border-primary/20 hover:border-primary text-[9px] font-semibold uppercase tracking-wider text-foreground hover:bg-primary/5 transition-all duration-300 cursor-pointer"
           >
             Explore Room
           </Link>

@@ -18,36 +18,34 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-card border-t border-primary/10 pt-12 pb-28 text-foreground/80">
-      <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+    <footer className="bg-card border-t border-primary/10 pt-8 pb-24 text-foreground/80">
+      <div className="max-w-7xl mx-auto px-5 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8">
         {/* Brand Section */}
-        <div className="flex flex-col gap-4">
+        <div className="col-span-2 lg:col-span-1 flex flex-col gap-3">
           <div className="flex items-center gap-2">
-            <span className="flex items-center justify-center w-8 h-8 rounded-full gold-gradient text-background font-serif font-bold text-sm">
-              4S
-            </span>
-            <span className="text-base font-serif font-bold tracking-wider text-foreground">
+            <img src="/images/logo.jpeg" alt="4 Seasons Stay Logo" className="w-7 h-7 rounded-full object-cover" />
+            <span className="text-sm font-serif font-bold tracking-wider text-foreground">
               4 Seasons Stay
             </span>
           </div>
-          <p className="text-xs leading-relaxed text-foreground/60">
+          <p className="text-[11px] leading-relaxed text-foreground/60">
             Stay Comfortably. Every Season. Experience a sanctuary where bespoke luxury meets timeless serenity. A single-property haven curated for those who appreciate life&apos;s finest details.
           </p>
-          <div className="flex gap-3">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300">
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="flex gap-2">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full border border-primary/20 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300">
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full border border-primary/20 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300">
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full border border-primary/20 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
               </svg>
             </a>
@@ -55,11 +53,11 @@ export default function Footer() {
         </div>
 
         {/* Navigation Quick Links */}
-        <div className="flex flex-col gap-3">
-          <h4 className="text-xs font-serif uppercase tracking-widest text-foreground font-semibold">
+        <div className="col-span-1 lg:col-span-1 flex flex-col gap-2.5">
+          <h4 className="text-[10px] font-serif uppercase tracking-widest text-foreground font-semibold">
             Explore
           </h4>
-          <div className="flex flex-col gap-2 text-xs">
+          <div className="flex flex-col gap-1.5 text-[11px]">
             <Link href="/" className="hover:text-primary transition-colors">Home Page</Link>
             <Link href="/rooms" className="hover:text-primary transition-colors">Our Luxury Rooms</Link>
             <Link href="/amenities" className="hover:text-primary transition-colors">Stay Amenities</Link>
@@ -70,52 +68,52 @@ export default function Footer() {
         </div>
 
         {/* Contact Info */}
-        <div className="flex flex-col gap-3">
-          <h4 className="text-xs font-serif uppercase tracking-widest text-foreground font-semibold">
+        <div className="col-span-1 lg:col-span-1 flex flex-col gap-2.5">
+          <h4 className="text-[10px] font-serif uppercase tracking-widest text-foreground font-semibold">
             Contact Details
           </h4>
-          <div className="flex flex-col gap-3 text-xs text-foreground/60">
-            <div className="flex gap-2 items-start">
-              <MapPin size={14} className="text-primary shrink-0" />
+          <div className="flex flex-col gap-2 text-[11px] text-foreground/60">
+            <div className="flex gap-1.5 items-start">
+              <MapPin size={12} className="text-primary shrink-0 mt-0.5" />
               <span className="leading-relaxed">23, Chandni Chowk Rd, Swamy Shivanandapuram, Shivaji Nagar, Bengaluru, Karnataka 560051</span>
             </div>
-            <div className="flex gap-2 items-center">
-              <Phone size={14} className="text-primary shrink-0" />
+            <div className="flex gap-1.5 items-center mt-0.5">
+              <Phone size={12} className="text-primary shrink-0" />
               <span>099544 55730</span>
             </div>
-            <div className="flex gap-2 items-center overflow-hidden">
-              <Mail size={14} className="text-primary shrink-0" />
+            <div className="flex gap-1.5 items-center mt-0.5 overflow-hidden">
+              <Mail size={12} className="text-primary shrink-0" />
               <span className="break-all">reservations@4seasonsstay.com</span>
             </div>
           </div>
         </div>
 
         {/* Newsletter Subscription */}
-        <div className="flex flex-col gap-3">
-          <h4 className="text-xs font-serif uppercase tracking-widest text-foreground font-semibold">
+        <div className="col-span-2 lg:col-span-1 flex flex-col gap-2.5">
+          <h4 className="text-[10px] font-serif uppercase tracking-widest text-foreground font-semibold">
             Newsletter
           </h4>
-          <p className="text-xs text-foreground/60 leading-relaxed">
-            Subscribe to receive exclusive invitations and seasonal boutique luxury offers.
+          <p className="text-[11px] text-foreground/60 leading-relaxed">
+            Subscribe to receive exclusive invitations and boutique luxury offers.
           </p>
-          <form onSubmit={handleSubscribe} className="flex flex-col gap-2 mt-1">
+          <form onSubmit={handleSubscribe} className="flex flex-col gap-2 mt-0.5">
             <input
               type="email"
               placeholder="Your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:border-primary text-xs transition-colors"
+              className="w-full px-2.5 py-1.5 rounded-lg border border-primary/20 bg-background/50 focus:outline-none focus:border-primary text-[10px] transition-colors"
             />
             <button
               type="submit"
-              className="w-full py-2 rounded-lg text-background gold-gradient hover:opacity-95 font-semibold text-[10px] uppercase tracking-wider transition-colors cursor-pointer"
+              className="w-full py-1.5 rounded-lg text-background gold-gradient hover:opacity-95 font-semibold text-[9px] uppercase tracking-wider transition-colors cursor-pointer"
             >
               Subscribe
             </button>
             {submitted && (
-              <div className="flex items-center gap-1.5 text-[10px] text-primary mt-1 animate-fade-in">
-                <ShieldCheck size={12} />
+              <div className="flex items-center gap-1.5 text-[9px] text-primary mt-1 animate-fade-in">
+                <ShieldCheck size={10} />
                 <span>Subscription recorded!</span>
               </div>
             )}
@@ -123,7 +121,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-5 pt-6 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-3 text-[10px] text-foreground/40">
+      <div className="max-w-7xl mx-auto px-5 pt-5 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-3 text-[9px] text-foreground/40">
         <p>© {new Date().getFullYear()} 4 Seasons Stay. All Rights Reserved.</p>
         <div className="flex gap-4">
           <a href="#" className="hover:text-primary">Privacy Policy</a>

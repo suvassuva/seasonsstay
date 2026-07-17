@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Hero from "@/components/hero";
 import RoomCard from "@/components/room-card";
+import VideoSlider from "@/components/video-slider";
 import { LUXURY_ROOMS, TESTIMONIALS, FAQS, NEARBY_ATTRACTIONS, GALLERY_ITEMS } from "@/lib/mock-data";
 import { MapPin, ArrowRight, Star, ChevronLeft, ChevronRight, Compass, Shield, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Home() {
   const [activeReviewIdx, setActiveReviewIdx] = useState(0);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [activeFaqIdx, setActiveFaqIdx] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [activeRoomIdx, setActiveRoomIdx] = useState(0);
 
@@ -50,6 +52,14 @@ export default function Home() {
     }, 4500);
     return () => clearInterval(timer);
   }, [isMobile, amenityItems.length]);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const timer = setInterval(() => {
+      setActiveFaqIdx((prev) => (prev + 1) % FAQS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isMobile]);
 
   const prevReview = () => {
     setActiveReviewIdx((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1));
@@ -106,51 +116,22 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Right side collage */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-6 grid grid-cols-2 gap-4 relative"
-        >
-          <div className="flex flex-col gap-4">
-            <div className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
-              <img
-                src="/images/room_king_bed.jpeg"
-                alt="Room View"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-square shadow-lg">
-              <img
-                src="/images/reception_desk_1.jpeg"
-                alt="Lobby View"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 pt-10">
-            <div className="rounded-2xl overflow-hidden aspect-square shadow-lg">
-              <img
-                src="/images/tea_coffee_station.jpeg"
-                alt="Dining Room"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
-              <img
-                src="/images/exterior_warm.jpeg"
-                alt="Property View"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 rounded-2xl glass shadow-2xl border border-primary/20 text-center max-w-[160px] hidden md:block">
-            <span className="block text-2xl font-bold font-serif text-primary">Luxury</span>
-            <span className="text-[10px] uppercase tracking-widest font-semibold text-foreground/70">Redefined</span>
-          </div>
-        </motion.div>
+        {/* Right side — Video Slider */}
+        {(() => {
+          const videos = [
+            { src: "/images/drone_entrance.mp4", label: "Grand Arrival" },
+            { src: "/images/hotel_interior.mp4", label: "Interior Elegance" },
+            { src: "/images/reception_welcome.mp4", label: "Warm Welcome" },
+            { src: "/images/room_bedside_lamps.mp4", label: "Ambient Suites" },
+            { src: "/images/coffee_pour.mp4", label: "Morning Ritual" },
+            { src: "/images/room_unlock.mp4", label: "Private Access" },
+            { src: "/images/bathroom_interior.mp4", label: "Spa Bathroom" },
+            { src: "/images/working_laptop.mp4", label: "Business Ready" },
+          ];
+          return (
+            <VideoSlider videos={videos} />
+          );
+        })()}
       </section>
 
       {/* 3. OUR ROOMS HIGHLIGHT */}
@@ -322,7 +303,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {GALLERY_ITEMS.slice(0, 3).map((item, idx) => (
+          {GALLERY_ITEMS.filter(i => i.type === "image").slice(0, 3).map((item, idx) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, scale: 0.98 }}
@@ -334,6 +315,8 @@ export default function Home() {
               <img
                 src={item.url}
                 alt={item.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
@@ -462,46 +445,84 @@ export default function Home() {
       </section>
 
       {/* 8. FAQ SECTION */}
-      <section className="max-w-3xl mx-auto px-5 w-full flex flex-col gap-6">
-        <div className="text-center flex flex-col gap-4">
-          <span className="text-xs uppercase tracking-[0.25em] font-semibold text-primary">
+      <section className="max-w-xl mx-auto px-5 w-full flex flex-col gap-4">
+        <div className="text-center flex flex-col gap-2">
+          <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-primary">
             Curious Minds
           </span>
-          <h2 className="text-2xl md:text-3xl font-serif font-bold">
+          <h2 className="text-xl md:text-2xl font-serif font-bold">
             Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="flex flex-col gap-4">
-          {FAQS.map((faq, idx) => {
-            const isOpen = expandedFaq === idx;
-            return (
-              <div
-                key={idx}
-                className="rounded-2xl border border-primary/10 bg-card overflow-hidden transition-all duration-300"
-              >
-                <button
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full px-4 py-3.5 flex items-center justify-between text-left font-serif font-semibold text-sm cursor-pointer hover:text-primary transition-colors"
+        {isMobile ? (
+          <div className="relative w-full flex flex-col items-center gap-4">
+            <div className="relative w-full overflow-hidden min-h-[150px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeFaqIdx}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full p-4 rounded-xl bg-card border border-primary/10 shadow-md flex flex-col gap-2"
                 >
-                  <span>{faq.q}</span>
-                  <span className={`text-xl transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}>
-                    +
-                  </span>
-                </button>
-                <div
-                  className={`transition-all duration-500 ease-in-out ${
-                    isOpen ? "max-h-40 border-t border-primary/5 p-4 bg-primary/5 opacity-100" : "max-h-0 overflow-hidden opacity-0"
-                  }`}
-                >
-                  <p className="text-xs text-foreground/75 leading-relaxed">
-                    {faq.a}
+                  <h4 className="text-xs font-serif font-semibold text-primary">
+                    {FAQS[activeFaqIdx].q}
+                  </h4>
+                  <p className="text-[11px] leading-relaxed text-foreground/60">
+                    {FAQS[activeFaqIdx].a}
                   </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Indicator Dots */}
+            <div className="flex gap-1.5 justify-center mt-1 flex-wrap max-w-full">
+              {FAQS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveFaqIdx(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    activeFaqIdx === i ? "w-4 bg-primary" : "w-1.5 bg-primary/20"
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3">
+            {FAQS.map((faq, idx) => {
+              const isOpen = expandedFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-xl border border-primary/10 bg-card overflow-hidden transition-all duration-300"
+                >
+                  <button
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full px-3.5 py-2.5 flex items-center justify-between text-left font-serif font-semibold text-xs cursor-pointer hover:text-primary transition-colors"
+                  >
+                    <span>{faq.q}</span>
+                    <span className={`text-base transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}>
+                      +
+                    </span>
+                  </button>
+                  <div
+                    className={`transition-all duration-500 ease-in-out ${
+                      isOpen ? "max-h-40 border-t border-primary/5 p-3.5 bg-primary/5 opacity-100" : "max-h-0 overflow-hidden opacity-0"
+                    }`}
+                  >
+                    <p className="text-[11px] text-foreground/60 leading-relaxed">
+                      {faq.a}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       {/* 9. BRAND STATEMENT NEWSLETTER */}

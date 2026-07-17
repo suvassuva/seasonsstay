@@ -90,9 +90,7 @@ function ConfirmationContent() {
         {/* Invoice Title & Logo */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-primary/10 pb-6">
           <div className="flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full gold-gradient text-background flex items-center justify-center font-serif font-bold text-sm">
-              4S
-            </span>
+            <img src="/images/logo.jpeg" alt="4 Seasons Stay Logo" className="w-8 h-8 rounded-full object-cover shadow-md" />
             <div className="flex flex-col">
               <span className="font-serif font-bold text-base tracking-wide text-foreground print:text-black">4 Seasons Stay</span>
               <span className="text-[9px] uppercase tracking-widest text-primary font-semibold">Boutique Stays</span>

@@ -42,50 +42,50 @@ export default function RoomsPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col gap-12 min-h-[80vh]">
       {/* Page Title Header */}
-      <div className="flex flex-col gap-4 max-w-2xl">
-        <span className="text-xs uppercase tracking-[0.25em] font-semibold text-primary">
+      <div className="flex flex-col gap-2 max-w-xl">
+        <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-primary">
           Our Accommodations
         </span>
-        <h1 className="text-4xl md:text-5xl font-serif font-bold">
+        <h1 className="text-2xl md:text-3xl font-serif font-bold">
           Refined Rooms & <span className="gold-text-gradient font-semibold">Suites</span>
         </h1>
-        <p className="text-sm text-foreground/60 leading-relaxed">
+        <p className="text-xs text-foreground/60 leading-relaxed">
           Select from our handcrafted room configurations. Each option is designed to host your stay with premium linens, tailored acoustics, and picturesque views.
         </p>
       </div>
 
       {/* active Search Dates Summary Indicator */}
       {searchParams.checkIn && searchParams.checkOut && (
-        <div className="p-4 rounded-xl bg-primary/5 border border-primary/10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm">
+        <div className="p-3 rounded-lg bg-primary/5 border border-primary/10 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-foreground/80">
-            <CalendarDays size={18} className="text-primary" />
+            <CalendarDays size={14} className="text-primary" />
             <span>
               Showing accommodation availability and rates for:{" "}
               <strong className="text-foreground">{formatDate(searchParams.checkIn)}</strong> to{" "}
               <strong className="text-foreground">{formatDate(searchParams.checkOut)}</strong>
             </span>
           </div>
-          <span className="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold text-primary w-fit">
+          <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-[10px] font-semibold text-primary w-fit">
             {searchParams.guests} {searchParams.guests === 1 ? "Guest" : "Guests"} Selected
           </span>
         </div>
       )}
 
       {/* Filter and Sort Panel */}
-      <div className="glass p-5 rounded-2xl flex flex-col lg:flex-row gap-6 justify-between items-center border border-primary/10 shadow-sm">
-        <div className="flex items-center gap-2 text-sm font-semibold tracking-wide text-foreground shrink-0 self-start lg:self-center">
-          <SlidersHorizontal size={16} className="text-primary" />
+      <div className="p-4 rounded-xl flex flex-col lg:flex-row gap-4 justify-between items-center border border-primary/10 bg-card/40 shadow-sm">
+        <div className="flex items-center gap-2 text-xs font-semibold tracking-wide text-foreground shrink-0 self-start lg:self-center">
+          <SlidersHorizontal size={14} className="text-primary" />
           <span>Filters & Sort</span>
         </div>
 
-        <div className="flex flex-wrap gap-4 items-center w-full lg:w-auto justify-start lg:justify-end">
+        <div className="flex flex-wrap gap-3.5 items-center w-full lg:w-auto justify-start lg:justify-end">
           {/* Capacity Filter */}
-          <div className="flex items-center gap-2 text-xs">
+          <div className="flex items-center gap-2 text-[11px]">
             <span className="text-foreground/60 font-medium">Capacity:</span>
             <select
               value={capacityFilter}
               onChange={(e) => setCapacityFilter(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-primary/20 bg-background focus:outline-none focus:border-primary text-xs font-medium cursor-pointer"
+              className="px-2.5 py-1.5 rounded-lg border border-primary/20 bg-background focus:outline-none focus:border-primary text-[10px] font-medium cursor-pointer"
             >
               <option value="all">All Capacities</option>
               <option value="2">2 Guests Only</option>
@@ -95,12 +95,12 @@ export default function RoomsPage() {
           </div>
 
           {/* Price Sorting */}
-          <div className="flex items-center gap-2 text-xs">
+          <div className="flex items-center gap-2 text-[11px]">
             <span className="text-foreground/60 font-medium">Sort By:</span>
             <select
               value={priceSort}
               onChange={(e) => setPriceSort(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-primary/20 bg-background focus:outline-none focus:border-primary text-xs font-medium cursor-pointer"
+              className="px-2.5 py-1.5 rounded-lg border border-primary/20 bg-background focus:outline-none focus:border-primary text-[10px] font-medium cursor-pointer"
             >
               <option value="default">Featured</option>
               <option value="low-high">Price: Low to High</option>
@@ -112,9 +112,9 @@ export default function RoomsPage() {
           {(capacityFilter !== "all" || priceSort !== "default") && (
             <button
               onClick={handleReset}
-              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-red-500 hover:bg-red-500/5 rounded-lg border border-red-500/20 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] font-semibold text-red-500 hover:bg-red-500/5 rounded-lg border border-red-500/20 transition-all cursor-pointer"
             >
-              <RefreshCw size={12} />
+              <RefreshCw size={10} />
               Reset Filters
             </button>
           )}

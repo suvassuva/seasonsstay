@@ -54,7 +54,7 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const firebaseAuth = {
   // Login with Email
-  signInWithEmail: async (email: string, password: string): Promise<UserProfile> => {
+  signInWithEmail: async (email: string, _password: string): Promise<UserProfile> => {
     await delay(800);
     const users = getStoredUsers();
     const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
@@ -113,7 +113,7 @@ export const firebaseAuth = {
   },
 
   // Send OTP
-  sendOTP: async (phone: string): Promise<string> => {
+  sendOTP: async (_phone: string): Promise<string> => {
     await delay(1000);
     // Simulate verification ID
     return `verification-id-${Math.random().toString(36).substr(2, 5)}`;

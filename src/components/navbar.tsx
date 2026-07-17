@@ -48,7 +48,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      style={{ zIndex: 9999 }}
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
         scrolled
           ? "glass-nav py-3 shadow-lg shadow-black/5"
           : "bg-background/20 backdrop-blur-md border-b border-white/5 py-4"
@@ -104,7 +105,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: 5 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute right-0 top-12 w-64 glass p-4 rounded-2xl border border-primary/15 shadow-2xl z-50 flex flex-col gap-3"
+                    className="absolute right-0 top-12 w-64 bg-card p-4 rounded-2xl border border-border shadow-2xl z-50 flex flex-col gap-3"
                   >
                     <div className="flex flex-col gap-0.5">
                       <span className="text-[10px] uppercase tracking-widest text-primary font-bold">4 Seasons Stay</span>
