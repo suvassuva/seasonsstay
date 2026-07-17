@@ -92,14 +92,13 @@ export default function VideoSlider({ videos, interval = 6000 }: VideoSliderProp
           >
             <video
               key={`video-${activeIdx}`}
+              src={videos[activeIdx].src}
               autoPlay
               loop
               muted
               playsInline
               className="w-full h-full object-cover"
-            >
-              <source src={videos[activeIdx].src} type="video/mp4" />
-            </video>
+            />
           </motion.div>
         </AnimatePresence>
 

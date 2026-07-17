@@ -63,14 +63,13 @@ export default function AboutPage() {
       {/* Editorial Title Banner with Video Background */}
       <section className="relative h-[35vh] min-h-[250px] flex items-center justify-center overflow-hidden">
         <video
+          src="/images/reception_welcome.mp4"
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/images/reception_welcome.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-black/75 z-10" />
         <div className="relative max-w-4xl mx-auto px-6 text-center z-20 flex flex-col items-center gap-2">
           <span className="text-[10px] uppercase tracking-[0.25em] text-primary font-semibold">Our Legacy</span>

@@ -14,11 +14,22 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/images/:path*",
+        // Cache images with immutable
+        source: "/images/:path*(jpe?g|png|gif|webp|avif|ico|svg|jpeg)",
         headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Cache videos without immutable to support HTTP Range requests on Vercel/Safari
+        source: "/images/:path*(mp4)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000",
           },
         ],
       },

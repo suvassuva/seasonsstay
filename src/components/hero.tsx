@@ -28,14 +28,13 @@ export default function Hero() {
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
+          src="/images/drone_entrance.mp4"
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/images/drone_entrance.mp4" type="video/mp4" />
-        </video>
+        />
         {/* Luxury Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/45 to-black/60 z-10" />
       </div>
