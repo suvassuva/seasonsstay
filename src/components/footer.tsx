@@ -31,7 +31,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-xs leading-relaxed text-foreground/60">
-            Stay Comfortably. Every Season. Experience a sanctuary where bespoke luxury meets timeless serenity. A single-property haven curated for those who appreciate life's finest details.
+            Stay Comfortably. Every Season. Experience a sanctuary where bespoke luxury meets timeless serenity. A single-property haven curated for those who appreciate life&apos;s finest details.
           </p>
           <div className="flex gap-3">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary transition-all duration-300">
@@ -62,7 +62,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2 text-xs">
             <Link href="/" className="hover:text-primary transition-colors">Home Page</Link>
             <Link href="/rooms" className="hover:text-primary transition-colors">Our Luxury Rooms</Link>
-            <Link href="/amenities" className="hover:text-primary transition-colors">Resort Amenities</Link>
+            <Link href="/amenities" className="hover:text-primary transition-colors">Stay Amenities</Link>
             <Link href="/gallery" className="hover:text-primary transition-colors">Photo Gallery</Link>
             <Link href="/about" className="hover:text-primary transition-colors">Our Legacy Story</Link>
             <Link href="/contact" className="hover:text-primary transition-colors">Get In Touch</Link>

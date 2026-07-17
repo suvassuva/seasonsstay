@@ -36,12 +36,23 @@ export default function RoomCard({ room }: RoomCardProps) {
     >
       {/* Image Gallery Slider Anchor */}
       <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
-        <img
-          src={room.images[0]}
-          alt={room.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          loading="lazy"
-        />
+        {room.images[0].endsWith(".mp4") ? (
+          <video
+            src={room.images[0]}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+        ) : (
+          <img
+            src={room.images[0]}
+            alt={room.name}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+          />
+        )}
         {/* Luxury premium banner */}
         {room.isPremium && (
           <span className="absolute top-3 left-3 z-10 px-3 py-1 rounded-full text-[8px] uppercase tracking-widest font-semibold text-background gold-gradient shadow-md">

@@ -88,8 +88,8 @@ export default function LoginPage() {
         setFormSuccess("Account registered successfully!");
       }
       router.push("/dashboard");
-    } catch (err: any) {
-      setFormError(err.message || "Authentication failed. Please check credentials.");
+    } catch (err) {
+      setFormError((err as Error).message || "Authentication failed. Please check credentials.");
     } finally {
       setLoading(false);
     }
@@ -103,8 +103,8 @@ export default function LoginPage() {
       setVerificationId(verId);
       setOtpSent(true);
       setFormSuccess("Simulated verification code sent! Use 123456 to verify.");
-    } catch (err: any) {
-      setFormError(err.message || "Failed to send code.");
+    } catch (err) {
+      setFormError((err as Error).message || "Failed to send code.");
     } finally {
       setLoading(false);
     }
@@ -122,8 +122,8 @@ export default function LoginPage() {
       await verifyOtp(verificationId, otpCode);
       setFormSuccess("Phone login successful!");
       router.push("/dashboard");
-    } catch (err: any) {
-      setFormError(err.message || "Invalid code. Try 123456.");
+    } catch (err) {
+      setFormError((err as Error).message || "Invalid code. Try 123456.");
     } finally {
       setLoading(false);
     }
@@ -136,7 +136,7 @@ export default function LoginPage() {
       await signInGoogle();
       setFormSuccess("Google sign-in successful!");
       router.push("/dashboard");
-    } catch (err: any) {
+    } catch (err) {
       setFormError("Google authentication cancelled or failed.");
     } finally {
       setLoading(false);

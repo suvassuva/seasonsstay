@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { GALLERY_ITEMS } from "@/lib/mock-data";
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Maximize2, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function GalleryPage() {
@@ -97,15 +97,34 @@ export default function GalleryPage() {
               onClick={() => openLightbox(item.id)}
               className="rounded-2xl overflow-hidden aspect-[4/3] bg-card border border-primary/5 relative group cursor-pointer shadow-md"
             >
-              <img
-                src={item.url}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              />
+              {item.type === "video" ? (
+                <video
+                  src={item.url}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                />
+              ) : (
+                <img
+                  src={item.url}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                />
+              )}
+              
+              {/* Permanent Video Indicator Badge */}
+              {item.type === "video" && (
+                <span className="absolute top-3 left-3 z-10 px-2.5 py-0.5 rounded-full text-[8px] uppercase tracking-widest font-semibold text-background gold-gradient shadow-md flex items-center gap-1">
+                  <Play size={8} className="fill-current" /> Video
+                </span>
+              )}
+
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-white">
-                    <Maximize2 size={16} />
+                    {item.type === "video" ? <Play size={16} className="ml-0.5 fill-current" /> : <Maximize2 size={16} />}
                   </div>
                   <span className="text-[10px] uppercase tracking-widest text-primary font-bold">
                     {item.category}
@@ -161,11 +180,23 @@ export default function GalleryPage() {
                 className="w-full flex justify-center"
                 onClick={(e) => e.stopPropagation()}
               >
-                <img
-                  src={filteredItems[lightboxIdx].url}
-                  alt={filteredItems[lightboxIdx].title}
-                  className="max-h-[70vh] max-w-full object-contain rounded-2xl border border-white/5 shadow-2xl"
-                />
+                {filteredItems[lightboxIdx].type === "video" ? (
+                  <video
+                    key={lightboxIdx}
+                    src={filteredItems[lightboxIdx].url}
+                    controls
+                    autoPlay
+                    loop
+                    playsInline
+                    className="max-h-[70vh] max-w-full rounded-2xl border border-white/5 shadow-2xl"
+                  />
+                ) : (
+                  <img
+                    src={filteredItems[lightboxIdx].url}
+                    alt={filteredItems[lightboxIdx].title}
+                    className="max-h-[70vh] max-w-full object-contain rounded-2xl border border-white/5 shadow-2xl"
+                  />
+                )}
               </motion.div>
 
               {/* Next */}
@@ -180,7 +211,7 @@ export default function GalleryPage() {
             {/* Captions */}
             <div className="max-w-4xl mx-auto w-full text-center text-white pb-4">
               <h3 className="font-serif text-lg md:text-xl font-bold">{filteredItems[lightboxIdx].title}</h3>
-              <p className="text-xs text-white/50 uppercase tracking-widest mt-1">4 Seasons Stay Boutique Resort</p>
+              <p className="text-xs text-white/50 uppercase tracking-widest mt-1">4 Seasons Stay Boutique Stays</p>
             </div>
           </motion.div>
         )}

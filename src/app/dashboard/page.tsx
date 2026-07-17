@@ -155,7 +155,7 @@ export default function CustomerDashboard() {
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as typeof activeTab)}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider text-left transition-all shrink-0 cursor-pointer w-full ${
                 activeTab === tab.id
                   ? "bg-primary text-background font-bold shadow-md shadow-primary/10"

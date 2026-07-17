@@ -117,14 +117,14 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <div className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=600"
+                src="/images/room_king_bed.jpeg"
                 alt="Room View"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="rounded-2xl overflow-hidden aspect-square shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=600"
+                src="/images/reception_desk_1.jpeg"
                 alt="Lobby View"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -133,15 +133,15 @@ export default function Home() {
           <div className="flex flex-col gap-4 pt-10">
             <div className="rounded-2xl overflow-hidden aspect-square shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600"
+                src="/images/tea_coffee_station.jpeg"
                 alt="Dining Room"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=600"
-                alt="Resort Pool"
+                src="/images/exterior_warm.jpeg"
+                alt="Property View"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -212,7 +212,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* 4. HOTEL AMENITIES SUMMARY */}
+      {/* 4. STAY AMENITIES SUMMARY */}
       <section className="w-full bg-card/45 py-12 border-y border-primary/5">
         <div className="max-w-7xl mx-auto px-5 flex flex-col gap-8">
           <div className="text-center max-w-2xl mx-auto flex flex-col gap-4">
@@ -360,7 +360,7 @@ export default function Home() {
           {/* Testimonial Active Slide */}
           <div className="min-h-[120px] flex flex-col justify-center items-center gap-3">
             <p className="text-xs md:text-base font-serif italic text-foreground/90 max-w-xl leading-relaxed">
-              "{TESTIMONIALS[activeReviewIdx].text}"
+              &ldquo;{TESTIMONIALS[activeReviewIdx].text}&rdquo;
             </p>
             <div className="flex items-center gap-2">
               <img
@@ -425,7 +425,7 @@ export default function Home() {
           </p>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative group shadow-lg">
             <img
-              src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?q=80&w=600"
+              src="/images/whatsapp_image_2.jpeg"
               alt="Attractions Scenic"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -506,7 +506,7 @@ export default function Home() {
 
       {/* 9. BRAND STATEMENT NEWSLETTER */}
       <section className="max-w-7xl mx-auto px-5 w-full">
-        <div className="rounded-2xl relative overflow-hidden bg-cover bg-center py-8 md:py-12 px-4 md:px-10 text-center flex flex-col items-center justify-center shadow-2xl border border-primary/15" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200')` }}>
+        <div className="rounded-2xl relative overflow-hidden bg-cover bg-center py-8 md:py-12 px-4 md:px-10 text-center flex flex-col items-center justify-center shadow-2xl border border-primary/15" style={{ backgroundImage: `url('/images/exterior_warm.jpeg')` }}>
           <div className="absolute inset-0 bg-black/75 z-0" />
           <div className="relative z-10 max-w-2xl flex flex-col items-center gap-3 md:gap-6 text-white">
             <span className="text-[9px] tracking-[0.4em] font-semibold text-primary uppercase">

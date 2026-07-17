@@ -42,7 +42,7 @@ export default function RoomDetailsPage() {
         <span className="text-6xl">🔍</span>
         <h2 className="text-3xl font-serif font-bold">Suite Not Found</h2>
         <p className="text-sm text-foreground/60 leading-relaxed">
-          The requested luxury room configuration does not exist in our hotel catalog.
+          The requested luxury room configuration does not exist in our accommodations catalog.
         </p>
         <Link
           href="/rooms"
@@ -153,7 +153,20 @@ export default function RoomDetailsPage() {
           {/* Interactive Image Gallery */}
           <div className="flex flex-col gap-4">
             <div className="rounded-3xl overflow-hidden aspect-[16/9] bg-muted shadow-lg border border-primary/10">
-              <img src={activeImg} alt={room.name} className="w-full h-full object-cover" />
+              {activeImg && activeImg.endsWith(".mp4") ? (
+                <video
+                  key={activeImg}
+                  src={activeImg}
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img src={activeImg} alt={room.name} className="w-full h-full object-cover" />
+              )}
             </div>
             <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
               {room.images.map((img, idx) => (
@@ -165,7 +178,11 @@ export default function RoomDetailsPage() {
                     activeImg === img ? "border-primary scale-[0.98]" : "border-transparent opacity-70 hover:opacity-100"
                   )}
                 >
-                  <img src={img} alt={`${room.name} view ${idx + 1}`} className="w-full h-full object-cover" />
+                  {img.endsWith(".mp4") ? (
+                    <video src={img} muted playsInline className="w-full h-full object-cover" />
+                  ) : (
+                    <img src={img} alt={`${room.name} view ${idx + 1}`} className="w-full h-full object-cover" />
+                  )}
                 </button>
               ))}
             </div>
@@ -264,7 +281,7 @@ export default function RoomDetailsPage() {
                 Cancellation Terms
               </h4>
               <p className="text-xs text-foreground/65 leading-relaxed">
-                We offer free booking cancellation up to 48 hours before your scheduled check-in window. Within 48 hours, a fee equivalent to a single night's accommodation rate will be processed.
+                We offer free booking cancellation up to 48 hours before your scheduled check-in window. Within 48 hours, a fee equivalent to a single night&apos;s accommodation rate will be processed.
               </p>
             </div>
           </div>

@@ -12,9 +12,9 @@ export const LUXURY_ROOMS: Room[] = [
     bedType: "Queen Size Bed",
     view: "City View & Courtyard",
     images: [
-      "https://images.unsplash.com/photo-1611891404779-49706b24985a?q=80&w=1200",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200"
+      "/images/room_king_bed.jpeg",
+      "/images/door_handle.jpeg",
+      "/images/room_bedside_lamps.mp4"
     ],
     facilities: [
       "Free high-speed WiFi",
@@ -40,9 +40,9 @@ export const LUXURY_ROOMS: Room[] = [
     bedType: "King Size Bed",
     view: "Garden View & Mountains",
     images: [
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1200",
-      "https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=1200",
-      "https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1200"
+      "/images/work_desk.jpeg",
+      "/images/bathroom_sink.jpeg",
+      "/images/working_laptop.mp4"
     ],
     facilities: [
       "Free high-speed WiFi",
@@ -69,9 +69,9 @@ export const LUXURY_ROOMS: Room[] = [
     bedType: "King Size + Sofa Bed",
     view: "Lake View & City Skyline",
     images: [
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200",
-      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=1200"
+      "/images/reception_desk_1.jpeg",
+      "/images/hotel_interior.mp4",
+      "/images/room_unlock.mp4"
     ],
     facilities: [
       "Executive Club Lounge access",
@@ -96,11 +96,11 @@ export const LUXURY_ROOMS: Room[] = [
     maxGuests: 4,
     sizeSqFt: 750,
     bedType: "Two Double Beds",
-    view: "Panoramic Resort & Pool View",
+    view: "Panoramic Property & Garden View",
     images: [
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200",
-      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200",
-      "https://images.unsplash.com/photo-1592229505726-ca121723b8ea?q=80&w=1200"
+      "/images/whatsapp_image_1.jpeg",
+      "/images/whatsapp_image_2.jpeg",
+      "/images/whatsapp_image_3.jpeg"
     ],
     facilities: [
       "Free high-speed WiFi",
@@ -113,7 +113,7 @@ export const LUXURY_ROOMS: Room[] = [
       "Buffet breakfast included"
     ],
     description: "Providing generous spaces for the whole family, this layout offers two separate sleeping zones, double vanity bathrooms, and access to children’s activity hubs.",
-    longDescription: "Specially designed for family bonding without compromising on luxury. The Grand Family Room consists of two distinct sleeping zones with high-end bedding, a dedicated family media lounge, and a large dining area for room-service gatherings. The room includes priority booking for resort activities, kid-friendly welcome treats, and child-safe furnishings.",
+    longDescription: "Specially designed for family bonding without compromising on luxury. The Grand Family Room consists of two distinct sleeping zones with high-end bedding, a dedicated family media lounge, and a large dining area for room-service gatherings. The room includes priority booking for curated activities, kid-friendly welcome treats, and child-safe furnishings.",
     isPremium: false
   },
   {
@@ -127,10 +127,9 @@ export const LUXURY_ROOMS: Room[] = [
     bedType: "King Size Grand Bed & Guest Suite",
     view: "360-Degree Mountain & Lake Vistas",
     images: [
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1200",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200"
+      "/images/bedroom_night.jpeg",
+      "/images/bathroom_interior.mp4",
+      "/images/reception_desk_2.jpeg"
     ],
     facilities: [
       "Private pool & jacuzzi deck",
@@ -140,7 +139,7 @@ export const LUXURY_ROOMS: Room[] = [
       "Luxury airport pickup via Rolls Royce",
       "Plush lounge with grand piano",
       "Steam & sauna inside bath area",
-      "VIP access to all hotel amenities"
+      "VIP access to all stay amenities"
     ],
     description: "Spanning across 1400 square feet, the Presidential Suite features a private terrace jacuzzi, a grand dining salon, a master study, and unmatched security and opulence.",
     longDescription: "The absolute crown jewel of 4 Seasons Stay. Our Presidential Suite represents the ultimate in hospitality and architectural design. The suite boasts high ceilings, crystal chandeliers, a private library/study, a fully-equipped kitchen with a personal butler entrance, and an outdoor terrace with a heated infinity jacuzzi. Ideal for VIP guests and celebrations of distinction.",
@@ -179,15 +178,28 @@ export const TESTIMONIALS: Review[] = [
 ];
 
 export const GALLERY_ITEMS = [
-  { id: "g1", category: "exterior", url: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800", title: "Palatial Exterior Architecture" },
-  { id: "g2", category: "lobby", url: "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800", title: "Grand Reception Hall" },
-  { id: "g3", category: "restaurant", url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800", title: "L'Aura Michelin Dining Room" },
-  { id: "g4", category: "rooms", url: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=800", title: "Presidential Living Area" },
-  { id: "g5", category: "rooms", url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800", title: "Deluxe Balcony Suite" },
-  { id: "g6", category: "exterior", url: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=800", title: "Heated Infinity Pool" },
-  { id: "g7", category: "restaurant", url: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=800", title: "Morning Breakfast Lounge" },
-  { id: "g8", category: "lobby", url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800", title: "Business Atrium" },
-  { id: "g9", category: "parking", url: "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?q=80&w=800", title: "Secure Valet Parking" }
+  { id: "g1", category: "exterior", url: "/images/drone_entrance.mp4", type: "video", title: "Drone View: Property Entrance" },
+  { id: "g2", category: "lobby", url: "/images/reception_welcome.mp4", type: "video", title: "Lobby Welcoming Guests" },
+  { id: "g3", category: "lobby", url: "/images/reception_desk_1.jpeg", type: "image", title: "Grand Reception Counter" },
+  { id: "g4", category: "lobby", url: "/images/reception_desk_2.jpeg", type: "image", title: "Lobby Waiting Lounge" },
+  { id: "g5", category: "lobby", url: "/images/reception_checkout.mp4", type: "video", title: "Seamless Reception Checkout" },
+  { id: "g6", category: "lobby", url: "/images/checkout_reception.jpeg", type: "image", title: "Checkout Reception Desk" },
+  { id: "g7", category: "rooms", url: "/images/room_king_bed.jpeg", type: "image", title: "Luxury Suite King Bed" },
+  { id: "g8", category: "rooms", url: "/images/bedroom_night.jpeg", type: "image", title: "Bespoke Bedroom At Night" },
+  { id: "g9", category: "rooms", url: "/images/room_bedside_lamps.mp4", type: "video", title: "Cozy Evening Bedside Ambiance" },
+  { id: "g10", category: "rooms", url: "/images/room_unlock.mp4", type: "video", title: "Keyless Smart Door Entry" },
+  { id: "g11", category: "rooms", url: "/images/door_handle.jpeg", type: "image", title: "Modern Premium Door Styling" },
+  { id: "g12", category: "rooms", url: "/images/bathroom_interior.mp4", type: "video", title: "Marble Bathroom Walkthrough" },
+  { id: "g13", category: "rooms", url: "/images/bathroom_sink.jpeg", type: "image", title: "Luxury Marble Double Vanity" },
+  { id: "g14", category: "rooms", url: "/images/work_desk.jpeg", type: "image", title: "Bespoke In-Room Work Station" },
+  { id: "g15", category: "rooms", url: "/images/working_laptop.mp4", type: "video", title: "Executive Workspace Environment" },
+  { id: "g16", category: "rooms", url: "/images/hotel_interior.mp4", type: "video", title: "Executive Club Tour" },
+  { id: "g17", category: "restaurant", url: "/images/tea_coffee_station.jpeg", type: "image", title: "In-Room Tea & Coffee Setup" },
+  { id: "g18", category: "restaurant", url: "/images/coffee_pour.mp4", type: "video", title: "Gourmet Breakfast Coffee Pour" },
+  { id: "g19", category: "exterior", url: "/images/exterior_warm.jpeg", type: "image", title: "Property Exterior Warm Evening Lighting" },
+  { id: "g20", category: "exterior", url: "/images/whatsapp_image_1.jpeg", type: "image", title: "Exclusive Room Suite View" },
+  { id: "g21", category: "exterior", url: "/images/whatsapp_image_2.jpeg", type: "image", title: "Property Perspective" },
+  { id: "g22", category: "exterior", url: "/images/whatsapp_image_3.jpeg", type: "image", title: "Tranquil Courtyard Setting" }
 ];
 
 export const NEARBY_ATTRACTIONS = [

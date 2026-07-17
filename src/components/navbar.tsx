@@ -4,14 +4,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/provider/state-provider";
-import { Menu, X, User, LogOut, Award, ArrowRight } from "lucide-react";
+import { Menu, X, User, Award, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -58,7 +58,7 @@ export default function Navbar() {
           <Link href="/" className="group flex items-center" aria-label="4 Seasons Stay Home">
             <div className="h-10 w-10 rounded-full overflow-hidden border border-primary/30 bg-card shadow-md group-hover:scale-105 transition-all duration-300">
               <img
-                src="/logostay.jpeg"
+                src="/images/logo.jpeg"
                 alt="4 Seasons Stay Logo"
                 className="h-full w-full object-cover"
               />
@@ -73,7 +73,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-card/40 hover:bg-card/80 transition-all duration-300 text-xs font-medium text-foreground hover:border-primary/50"
               >
                 <User size={14} className="text-primary" />
-                <span className="hidden sm:inline max-w-[100px] truncate">{user.displayName}</span>
+                <span className="hidden sm:inline max-w-[120px] truncate">My Stays & Wishlist</span>
               </Link>
             )}
 
@@ -183,37 +183,14 @@ export default function Navbar() {
                 transition={{ delay: 0.25 }}
                 className="flex flex-col gap-2 mt-auto"
               >
-                {user ? (
-                  <>
-                    <Link
-                      href="/dashboard"
-                      onClick={() => setMenuOpen(false)}
-                      className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-primary/20 bg-card/40 text-xs font-semibold uppercase tracking-wider text-foreground hover:bg-card/70 transition-all"
-                    >
-                      <Award size={14} className="text-primary" />
-                      My Dashboard
-                    </Link>
-                    <button
-                      onClick={() => {
-                        logout();
-                        setMenuOpen(false);
-                      }}
-                      className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-red-500/20 text-xs font-semibold uppercase tracking-wider text-red-400 hover:bg-red-500/5 transition-all cursor-pointer"
-                    >
-                      <LogOut size={12} />
-                      Sign Out
-                    </button>
-                  </>
-                ) : (
-                  <Link
-                    href="/login"
-                    onClick={() => setMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-primary/20 bg-card/40 text-xs font-semibold uppercase tracking-wider text-foreground hover:bg-card/70 transition-all"
-                  >
-                    <User size={14} className="text-primary" />
-                    Sign In
-                  </Link>
-                )}
+                <Link
+                  href="/dashboard"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-primary/20 bg-card/40 text-xs font-semibold uppercase tracking-wider text-foreground hover:bg-card/70 transition-all"
+                >
+                  <Award size={14} className="text-primary" />
+                  My Stays & Wishlist
+                </Link>
 
                 <Link
                   href="/rooms"

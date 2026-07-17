@@ -15,6 +15,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function AmenitiesPage() {
   const allAmenities = [
@@ -123,18 +124,18 @@ export default function AmenitiesPage() {
           Our butler staff is happy to coordinate bespoke setups including private yacht hire, private medical care, special dietary chefs, or custom room automation configurations. Get in touch with our team today.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <a
+          <Link
             href="/contact"
             className="px-6 py-2.5 rounded-full border border-primary text-xs font-semibold uppercase tracking-wider text-primary hover:bg-primary hover:text-background transition-all duration-300"
           >
             Contact Concierge
-          </a>
-          <a
+          </Link>
+          <Link
             href="/rooms"
             className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-background gold-gradient hover:opacity-95 shadow-md transition-all duration-300"
           >
             Book Your Stay
-          </a>
+          </Link>
         </div>
       </div>
     </div>

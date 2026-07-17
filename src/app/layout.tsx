@@ -19,11 +19,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "4 Seasons Stay | Luxury Hotel Booking",
-  description: "Stay Comfortably. Every Season. Experience premium accommodations, gourmet dining, and tailored comfort at 4 Seasons Stay.",
+  title: "4 Seasons Stay | Luxury Rooms & Suites Booking",
+  description: "Stay Comfortably. Every Season. Experience premium room stays, custom services, and tailored comfort at 4 Seasons Stay.",
   openGraph: {
-    title: "4 Seasons Stay | Luxury Hotel Booking",
-    description: "Experience premium accommodations and tailored comfort at 4 Seasons Stay. Stay Comfortably. Every Season.",
+    title: "4 Seasons Stay | Luxury Rooms & Suites Booking",
+    description: "Experience premium room stays and tailored comfort at 4 Seasons Stay. Stay Comfortably. Every Season.",
     type: "website",
     locale: "en_US",
     url: "https://www.4seasonsstay.com",
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "4 Seasons Stay | Luxury Hotel Booking",
-    description: "Stay Comfortably. Every Season. Premium luxury accommodations and booking.",
+    title: "4 Seasons Stay | Luxury Rooms & Suites Booking",
+    description: "Stay Comfortably. Every Season. Premium luxury room stays and booking.",
   },
 };
 

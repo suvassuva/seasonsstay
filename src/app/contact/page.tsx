@@ -142,7 +142,7 @@ export default function ContactPage() {
             {/* Map info glass widget */}
             <div className="glass p-4 rounded-2xl relative z-10 flex flex-col gap-1">
               <span className="text-[9px] uppercase tracking-widest text-primary font-bold">Directions</span>
-              <h4 className="font-serif font-semibold text-sm">4 Seasons Stay Resort</h4>
+              <h4 className="font-serif font-semibold text-sm">4 Seasons Stay Boutique Stays</h4>
               <p className="text-[10px] text-foreground/60 leading-relaxed">
                 Located 15 minutes from Cascade summit and 45 minutes from international terminal. Secure parking is included.
               </p>

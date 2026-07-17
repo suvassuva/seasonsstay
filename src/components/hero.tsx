@@ -1,32 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useBooking } from "@/components/provider/state-provider";
 import { Calendar, Users, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1920",
-  "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1920",
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920"
-];
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const [currentIdx, setCurrentIdx] = useState(0);
   const router = useRouter();
   const { searchParams, setSearchParams } = useBooking();
   const [localParams, setLocalParams] = useState(searchParams);
-
-  // Auto rotate slide images
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIdx((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const handleInputChange = (field: keyof typeof localParams, value: any) => {
+  const handleInputChange = (field: keyof typeof localParams, value: string | number) => {
     setLocalParams((prev) => ({
       ...prev,
       [field]: value
@@ -41,19 +25,17 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[550px] md:min-h-[480px] md:h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image Carousel with Zoom/Fade */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIdx}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${HERO_IMAGES[currentIdx]})` }}
-          />
-        </AnimatePresence>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/images/drone_entrance.mp4" type="video/mp4" />
+        </video>
         {/* Luxury Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/45 to-black/60 z-10" />
       </div>

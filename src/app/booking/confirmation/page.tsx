@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { getStoredBookings } from "@/lib/firebase";
 import { Booking } from "@/types";
 import { formatPrice, formatDate, calculateNights } from "@/lib/utils";
-import { CheckCircle2, Download, Home, LayoutDashboard, Printer, Calendar, Users, FileText } from "lucide-react";
+import { CheckCircle2, Download, Home, LayoutDashboard, Printer, Calendar, Users, FileText, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 function ConfirmationContent() {
@@ -95,7 +95,7 @@ function ConfirmationContent() {
             </span>
             <div className="flex flex-col">
               <span className="font-serif font-bold text-base tracking-wide text-foreground print:text-black">4 Seasons Stay</span>
-              <span className="text-[9px] uppercase tracking-widest text-primary font-semibold">Boutique Resort</span>
+              <span className="text-[9px] uppercase tracking-widest text-primary font-semibold">Boutique Stays</span>
             </div>
           </div>
           <div className="flex flex-col md:items-end text-xs text-foreground/60 print:text-black">
@@ -129,7 +129,7 @@ function ConfirmationContent() {
               <span>Phone: {booking.guestDetails.phone}</span>
               {booking.specialRequests && (
                 <span className="text-[11px] text-foreground/50 mt-1 block italic print:text-black">
-                  Request: "{booking.specialRequests}"
+                  Request: &ldquo;{booking.specialRequests}&rdquo;
                 </span>
               )}
             </div>
@@ -192,10 +192,10 @@ function ConfirmationContent() {
         </button>
 
         <Link
-          href="/dashboard"
+          href="/rooms"
           className="w-full sm:w-auto px-6 py-3 rounded-full border border-primary text-xs font-semibold uppercase tracking-wider text-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
-          <LayoutDashboard size={14} /> Customer Dashboard
+          <ArrowRight size={14} /> Browse More Rooms
         </Link>
 
         <Link

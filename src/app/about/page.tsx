@@ -57,7 +57,7 @@ export default function AboutPage() {
             Bespoke Architecture Meets Timeless Hospitality
           </h2>
           <p className="text-sm text-foreground/75 leading-relaxed">
-            Founded in 2022, 4 Seasons Stay was conceived not as a simple commercial hotel, but as a residential sanctuary. Located on a peaceful lakeside peninsula, the property was engineered to serve as a private escape for travelers who prioritize absolute calm, premium materials, and custom service.
+            Founded in 2022, 4 Seasons Stay was conceived not as simple commercial rooms, but as a residential stay sanctuary. Located on a peaceful lakeside peninsula, the property was engineered to serve as a private escape for travelers who prioritize absolute calm, premium materials, and custom service.
           </p>
           <p className="text-sm text-foreground/60 leading-relaxed">
             Our building integrates sustainable marble, structural glass decks, and rich cedar cabinetry to form a minimal, elegant aesthetic. Bounded by majestic mountain skylines, our single branch remains fully focused on delivering exceptional hospitality on an individual basis, ensuring that every season of your stay feels like home.
@@ -83,7 +83,7 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="p-8 rounded-2xl bg-card border border-primary/10 shadow-lg flex flex-col gap-4">
           <span className="text-xs uppercase tracking-widest text-primary font-bold">Our Mission</span>
-          <h3 className="text-xl font-serif font-semibold text-foreground">Elevating the Residential Hotel Standard</h3>
+          <h3 className="text-xl font-serif font-semibold text-foreground">Elevating the Residential Stay Standard</h3>
           <p className="text-xs leading-relaxed text-foreground/65">
             To provide our guests with an uncompromised state of comfort through bespoke room customization, organic locally-sourced dining, and proactive concierge support, turning hospitality into an art of relaxation.
           </p>
@@ -93,7 +93,7 @@ export default function AboutPage() {
           <span className="text-xs uppercase tracking-widest text-primary font-bold">Our Vision</span>
           <h3 className="text-xl font-serif font-semibold text-foreground">A Legacy of Serene Living</h3>
           <p className="text-xs leading-relaxed text-foreground/65">
-            To remain a singular, meticulously managed luxury destination that champions environmental design, fine dining, and elite service, serving as the benchmark for luxury boutique hotels.
+            To remain a singular, meticulously managed luxury destination that champions environmental design, fine dining, and elite service, serving as the benchmark for luxury boutique stays.
           </p>
         </div>
       </section>

@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { UserProfile, Booking, SearchParams } from "@/types";
-import { firebaseAuth, getActiveUser, getStoredBookings, saveNewBooking } from "@/lib/firebase";
+import { firebaseAuth, getActiveUser, getStoredBookings, saveNewBooking, saveActiveUser } from "@/lib/firebase";
 
 // --- AUTH CONTEXT ---
 interface AuthContextType {
@@ -61,19 +61,24 @@ export function StateProvider({ children }: { children: React.ReactNode }) {
   // Sync auth on mount
   useEffect(() => {
     const syncAuth = () => {
-      const active = getActiveUser();
+      let active = getActiveUser();
+      if (!active) {
+        // Auto-authenticate as default guest session to enable pure frontend interactivity
+        active = {
+          uid: "guest-uid-12345",
+          email: "guest@4seasonsstay.com",
+          displayName: "Boutique Guest",
+          wishlist: [],
+          createdAt: new Date().toISOString()
+        };
+        saveActiveUser(active);
+      }
       setUser(active);
       
       // Load user bookings
       const allBookings = getStoredBookings();
-      if (active) {
-        // In real backend, filter by user email/uid. Here, filter if we want, or show all bookings.
-        // Let's filter by the user's email to simulate separation of user accounts!
-        const userBookings = allBookings.filter(b => b.guestDetails.email.toLowerCase() === active.email.toLowerCase());
-        setBookings(userBookings);
-      } else {
-        setBookings([]);
-      }
+      const userBookings = allBookings.filter(b => b.guestDetails.email.toLowerCase() === active!.email.toLowerCase());
+      setBookings(userBookings);
       setLoading(false);
     };
 
