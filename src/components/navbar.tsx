@@ -4,10 +4,12 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/provider/state-provider";
-import { User } from "lucide-react";
+import { User, MessageCircle, Phone, Mail, MessageSquare, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const pathname = usePathname();
   const { user } = useAuth();
 
@@ -16,6 +18,24 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close popover on navigation
+  useEffect(() => {
+    setPopoverOpen(false);
+  }, [pathname]);
+
+  // Click outside to close popover
+  useEffect(() => {
+    if (!popoverOpen) return;
+    const handleOutsideClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(".nav-popover-container")) {
+        setPopoverOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [popoverOpen]);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -64,17 +84,89 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right Side: Customer Stays / Wishlist Link */}
-        <div className="flex items-center gap-3">
+        {/* Right Side: Customer Stays / Wishlist Link + Popover */}
+        <div className="flex items-center gap-3 relative nav-popover-container">
           {user && (
-            <Link
-              href="/dashboard"
-              className="relative w-10 h-10 flex items-center justify-center rounded-xl border border-primary/15 bg-card/30 hover:bg-card/60 hover:border-primary/35 hover:text-primary text-foreground/80 transition-all duration-300 shadow-sm"
-              aria-label="My Stays & Wishlist"
-              title="My Stays & Wishlist"
-            >
-              <User size={18} />
-            </Link>
+            <>
+              <button
+                onClick={() => setPopoverOpen(!popoverOpen)}
+                className="relative w-10 h-10 flex items-center justify-center rounded-xl border border-primary/15 bg-card/30 hover:bg-card/60 hover:border-primary/35 hover:text-primary text-foreground/80 transition-all duration-300 shadow-sm cursor-pointer"
+                aria-label="Toggle contact & stays menu"
+                title="Support & Stays"
+              >
+                <User size={18} />
+              </button>
+
+              <AnimatePresence>
+                {popoverOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 5 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: 5 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute right-0 top-12 w-64 glass p-4 rounded-2xl border border-primary/15 shadow-2xl z-50 flex flex-col gap-3"
+                  >
+                    <div className="flex flex-col gap-0.5">
+                      <span className="text-[10px] uppercase tracking-widest text-primary font-bold">4 Seasons Stay</span>
+                      <h4 className="font-serif font-semibold text-xs text-foreground">Guest Support & Account</h4>
+                    </div>
+
+                    {/* Small Quick Contact Buttons */}
+                    <div className="grid grid-cols-4 gap-2">
+                      <a
+                        href="https://wa.me/18005554732"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-col items-center justify-center p-2 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 hover:text-primary transition-all group"
+                        title="WhatsApp"
+                      >
+                        <MessageCircle size={16} />
+                        <span className="text-[8px] mt-1 text-foreground/50 group-hover:text-primary font-medium">WhatsApp</span>
+                      </a>
+                      <a
+                        href="tel:+18005554732"
+                        className="flex flex-col items-center justify-center p-2 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 hover:text-primary transition-all group"
+                        title="Call Support"
+                      >
+                        <Phone size={16} />
+                        <span className="text-[8px] mt-1 text-foreground/50 group-hover:text-primary font-medium">Call</span>
+                      </a>
+                      <a
+                        href="mailto:reservations@4seasonsstay.com"
+                        className="flex flex-col items-center justify-center p-2 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 hover:text-primary transition-all group"
+                        title="Email Reservations"
+                      >
+                        <Mail size={16} />
+                        <span className="text-[8px] mt-1 text-foreground/50 group-hover:text-primary font-medium">Email</span>
+                      </a>
+                      <a
+                        href="sms:+18005554732"
+                        className="flex flex-col items-center justify-center p-2 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 hover:text-primary transition-all group"
+                        title="SMS Message"
+                      >
+                        <MessageSquare size={16} />
+                        <span className="text-[8px] mt-1 text-foreground/50 group-hover:text-primary font-medium">SMS</span>
+                      </a>
+                    </div>
+
+                    <div className="border-t border-primary/10 my-0.5" />
+
+                    {/* Link to dashboard */}
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setPopoverOpen(false)}
+                      className="flex items-center justify-between py-2 px-3 rounded-xl bg-primary/10 border border-primary/20 text-xs font-semibold text-primary hover:bg-primary/15 transition-all group"
+                    >
+                      <span className="flex items-center gap-1.5">
+                        <User size={12} />
+                        My Stays & Wishlist
+                      </span>
+                      <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>
           )}
         </div>
       </div>
